@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  margin: 0;
+  margin: 1rem;
 }
 
 .nav-link {
@@ -20,11 +20,15 @@
   font-weight: bold;
   text-decoration: none;
   transition: opacity 0.2s ease;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .nav-link:hover {
   opacity: 0.8;
+}
+
+.nav-user {
+  margin: 0;
 }
 
 .user-box {
@@ -39,4 +43,14 @@
 .user-info {
   font-size: 0.95rem;
   font-weight: bold;
+}
+
+.user {
+  color: #fefefe;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#jwt-navbar-placeholder {
+  margin: 0;
 }

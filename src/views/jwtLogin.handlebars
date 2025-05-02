@@ -1,0 +1,53 @@
+<div class="form-container">
+  <h2>Iniciar sesión con JWT</h2>
+  <form id="jwtLoginForm">
+    <input type="email" name="email" placeholder="Correo electrónico" required>
+    <input type="password" name="password" placeholder="Contraseña" required>
+    <button type="submit">Iniciar sesión</button>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('🧠 Script JWT ejecutándose');
+
+    const form = document.getElementById('jwtLoginForm');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const email = formData.get('email');
+      const password = formData.get('password');
+
+      try {
+        const res = await fetch('/jwt/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ email, password })
+        });
+
+        const data = await res.json();
+        console.log('🎯 Respuesta del backend:', data);
+
+      if (res.ok && data.token) {
+        localStorage.setItem('jwtToken', data.token);
+
+        // ✨ Guardar nombre y rol del usuario
+        const payload = JSON.parse(atob(data.token.split('.')[1]));
+        const { name, role } = payload.user;
+
+        localStorage.setItem('jwtUserName', name);
+        localStorage.setItem('jwtUserRole', role);
+
+        window.location.href = '/jwt/profile';
+      }
+      else {
+          alert('Login inválido');
+        }
+      } catch (err) {
+        console.error('❌ Error al iniciar sesión:', err);
+      }
+    });
+  });
+</script>

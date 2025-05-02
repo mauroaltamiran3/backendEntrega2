@@ -6,13 +6,27 @@
   </div>
 
   <div class="nav-right">
-    {{#if usuario}}
-      <div class="user-box">
-        <span class="user-info">👤 {{usuario.first_name}} ({{usuario.role}})</span>
-        <a href="/session/logout" class="nav-link">📦 Cerrar sesión</a>
-      </div>
-    {{else}}
-      <a href="/login" class="nav-link">🔐 Iniciar sesión</a>
-    {{/if}}
-  </div>
+  {{#if usuario}}
+    <div class="nav-user">
+      <span class="user">👤 {{usuario.first_name}} ({{usuario.role}})</span>
+      {{#ifEquals usuario.role "user"}}
+        <form action="/session/setadmin" method="POST" style="display:inline;">
+          <button type="submit" class="nav-link" style="background:none; border:none; padding:0; cursor:pointer; color:white;">
+            🔒 Convertirme en admin
+          </button>
+        </form>
+      {{/ifEquals}}
+            {{#ifEquals usuario.role "admin"}}
+        <form action="/session/setuser" method="POST" style="display:inline;">
+          <button type="submit" class="nav-link" style="background:none; border:none; padding:0; cursor:pointer; color:white;">
+            🔒 Convertirme en user
+          </button>
+        </form>
+      {{/ifEquals}}
+      <a href="/session/logout" class="nav-link">🚪 Cerrar sesión</a>
+    </div>
+  {{else}}
+    <a href="/login" class="nav-link" id="session-login-link">🔐 Iniciar sesión</a>
+    <div id="jwt-navbar-placeholder"></div>
+  {{/if}}
 </nav>

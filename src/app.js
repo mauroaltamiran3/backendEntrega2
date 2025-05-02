@@ -17,6 +17,7 @@ import session from 'express-session';
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
 import sessionRouter from './routes/sessions.router.js';
+import jwtRouter from './routes/jwt.router.js';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -84,6 +85,7 @@ app.use('/session', sessionRouter);
 app.use(productsRouter);
 app.use(cartRouter);
 app.use(ticketsRouter);
+app.use(jwtRouter);
 
 // Iniciar servidor
 app.listen(PORT, () => {

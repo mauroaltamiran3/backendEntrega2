@@ -11,8 +11,12 @@
   </div>
 
   <hr>
-  <a href="/session/github" class="github-button">Entrar con GitHub</a>
+  <div class="logins">
+    <a href="/session/github" class="github-button">Entrar con GitHub</a>
+    <a href="/jwt/login" class="jwt-button">Iniciar sesión con JWT</a>
+  </div>
 </div>
+
 {{#if registroExitoso}}
 <script>
   Swal.fire({

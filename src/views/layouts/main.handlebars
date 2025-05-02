@@ -19,6 +19,53 @@
     {{{body}}}
   </main>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('admin') === 'ok') {
+      Swal.fire({
+        icon: 'success',
+        title: '¡Ahora sos administrador!',
+        text: 'Tu rol ha sido actualizado exitosamente.',
+        timer: 1500,
+        showConfirmButton: false
+      }) 
+      window.history.replaceState({}, document.title, "/");
+    } else if (urlParams.get('user') === 'ok') {
+      Swal.fire({
+        icon: 'success',
+        title: '¡Ahora sos user!',
+        text: 'Tu rol ha sido actualizado exitosamente.',
+        timer: 1500,
+        showConfirmButton: false
+      });
+      window.history.replaceState({}, document.title, "/");
+    }
+  </script>
   {{{scripts}}}
+  <script>
+    const jwtToken = localStorage.getItem('jwtToken');
+    const jwtName = localStorage.getItem('jwtUserName');
+    const jwtRole = localStorage.getItem('jwtUserRole');
+    const jwtPlaceholder = document.getElementById('jwt-navbar-placeholder');
+    const sessionLoginLink = document.getElementById('session-login-link');
+
+    if (jwtToken && jwtPlaceholder) {
+      jwtPlaceholder.innerHTML = `
+        <span class="user">👤 ${jwtName} (${jwtRole})</span>
+        <a href="/jwt/profile" class="nav-link">📄 Mi perfil</a>
+        <a href="#" class="nav-link" id="jwtLogoutBtn">🚪 Cerrar sesión</a>
+      `;
+
+      if (sessionLoginLink) sessionLoginLink.style.display = 'none';
+
+      document.getElementById('jwtLogoutBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('jwtUserName');
+        localStorage.removeItem('jwtUserRole');
+        window.location.href = '/';
+      });
+    }
+  </script>
 </body>
 </html>

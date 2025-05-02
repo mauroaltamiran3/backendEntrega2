@@ -2,6 +2,10 @@ import passport from 'passport';
 import local from 'passport-local';
 import User from '../models/User.js';
 import { createHash, isValidPassword } from '../utils.js';
+import GitHubStrategy from 'passport-github2';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const LocalStrategy = local.Strategy;
 
@@ -51,6 +55,31 @@ const initializePassport = () => {
     const user = await User.findById(id);
     done(null, user);
   });
+
+  passport.use('github', new GitHubStrategy({
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.GITHUB_CALLBACK_URL
+  }, async (accessToken, refreshToken, profile, done) => {
+    try {
+      const email = profile.emails?.[0]?.value || `${profile.username}@github.com`;
+  
+      let user = await User.findOne({ email });
+      if (!user) {
+        user = await User.create({
+          first_name: profile.displayName || profile.username,
+          last_name: 'GitHub',
+          email,
+          password: createHash(Date.now().toString()), // 🔒 contraseña dummy encriptada
+          role: 'user'
+        });
+      }
+      
+      return done(null, user);
+    } catch (error) {
+      return done(error);
+    }
+  }));
 };
 
 export default initializePassport;

@@ -149,4 +149,16 @@ router.get('/login', (req, res) => {
   });  
 });
 
+router.get('/jwt/login', (req, res) => {
+  res.render('jwtLogin', {
+    style: ['auth', 'navbar']
+  });
+});
+  
+  router.get('/jwt/profile', (req, res) => {
+  res.render('jwtProfile', {
+    style: ['auth', 'navbar']
+  });
+});
+
 export default router;

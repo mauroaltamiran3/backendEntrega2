@@ -63,4 +63,21 @@
   .logo {
     max-width: 100px;
     height: auto;
-  }  
+  }
+  .logins {
+    width: 90%;
+  }
+
+  .jwt-button {
+    display: block;
+    background-color: #24292e;
+    color: white;
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 1rem;
+    width: 100%;
+    text-decoration: underline;
+  }
+  

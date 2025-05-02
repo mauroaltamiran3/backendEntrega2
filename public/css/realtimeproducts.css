@@ -1,0 +1,80 @@
+  h1 {
+    text-align: center;
+    color: #111;
+    margin-bottom: 2rem;
+  }
+  
+  /* Formulario */
+  form#productForm {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  form input, form button {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+  }
+  
+  form button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #005f56;
+  }
+  
+  /* Tabla de productos */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: center;
+  }
+  
+  thead {
+    background-color: #efefef;
+  }
+  
+  .img-mini {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+  
+  /* Botones de navegación */
+  button {
+    padding: 0.4rem 0.7rem;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #005f56;
+  }
+  
+  #btn-comprar,
+  #btn-vaciarCarrito {
+    margin: 1rem 0.5rem;
+  }
+  
+  div {
+    margin-top: 2rem;
+    text-align: center;
+  }

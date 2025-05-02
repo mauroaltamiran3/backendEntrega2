@@ -1,0 +1,60 @@
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: center;
+  }
+  
+  thead {
+    background-color: #efefef;
+  }
+  
+  .img-mini {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 0.4rem 0.7rem;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn-eliminar{
+    background-color: #b31123;
+  }
+
+  .btn-eliminar:hover{
+    background-color: #6c0915;
+  }
+  
+  button:hover {
+    background-color: #005f56;
+  }
+  
+  #btn-comprar,
+  #btn-vaciarCarrito {
+    margin: 1rem 0.5rem;
+  }
+  
+  div {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  

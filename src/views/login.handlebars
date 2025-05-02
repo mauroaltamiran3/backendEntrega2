@@ -1,0 +1,26 @@
+<div class="form-container">
+  <h2>Iniciar sesión</h2>
+  <form action="/session/login" method="POST">
+    <input type="email" name="email" placeholder="Correo electrónico" required>
+    <input type="password" name="password" placeholder="Contraseña" required>
+    <button type="submit">Iniciar sesión</button>
+  </form>
+
+  <div class="form-footer">
+    <a href="/register">¿No tenés cuenta? Registrate</a>
+  </div>
+
+  <hr>
+  <a href="/session/github" class="github-button">Entrar con GitHub</a>
+</div>
+{{#if registroExitoso}}
+<script>
+  Swal.fire({
+    icon: 'success',
+    title: '¡Registro exitoso!',
+    text: 'Ahora puedes iniciar sesión.',
+    timer: 3000,
+    showConfirmButton: false
+  });
+</script>
+{{/if}}

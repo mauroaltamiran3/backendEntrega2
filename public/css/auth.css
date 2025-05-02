@@ -1,0 +1,66 @@
+.form-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .form-container h2 {
+    margin-bottom: 1rem;
+    color: #111;
+  }
+  
+  .form-container input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-container button,
+  .github-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .form-container button:hover,
+  .github-button:hover {
+    background-color: #005f56;
+  }
+  
+  .form-footer {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .form-footer a {
+    text-decoration: none;
+    color: #00796b;
+  }
+  
+  .github-button {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #24292e;
+  }  
+
+  .logo-container {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .logo {
+    max-width: 100px;
+    height: auto;
+  }  

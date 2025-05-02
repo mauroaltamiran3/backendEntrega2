@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="/" class="nav-link">🏠 Inicio</a>
+    <a href="/realtimeproducts" class="nav-link">➕ Agregar Producto</a>
+    <a href="/carts/{{carritoId}}" class="nav-link">🛒 Ir al Carrito</a>
+  </div>
+
+  <div class="nav-right">
+    {{#if usuario}}
+      <div class="user-box">
+        <span class="user-info">👤 {{usuario.first_name}} ({{usuario.role}})</span>
+        <a href="/session/logout" class="nav-link">📦 Cerrar sesión</a>
+      </div>
+    {{else}}
+      <a href="/login" class="nav-link">🔐 Iniciar sesión</a>
+    {{/if}}
+  </div>
+</nav>

@@ -1,0 +1,86 @@
+.producto-detalle {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1100px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  .galeria {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .imagen-principal {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+  }
+  
+  .miniaturas {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .miniaturas img {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .miniaturas img:hover {
+    transform: scale(1.1);
+  }
+  
+  .informacion {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .titulo {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #222;
+  }
+  
+  .precio {
+    font-size: 1.5rem;
+    color: #0d8050;
+    margin-bottom: 1rem;
+  }
+  
+  .informacion p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .btn-add {
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #00724e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-add:hover {
+    background-color: #009765;
+  }
+  

@@ -1,0 +1,31 @@
+<div class="logo-container">
+  <img src="/static/img/logo.png" alt="Logo" class="logo" />
+</div>
+
+<div class="form-container">
+  <h2>Registro</h2>
+  <form action="/session/register" method="POST">
+    <input type="text" name="first_name" placeholder="Nombre" required>
+    <input type="text" name="last_name" placeholder="Apellido" required>
+    <input type="email" name="email" placeholder="Correo electrónico" required>
+    <input type="password" name="password" placeholder="Contraseña" required>
+    <button type="submit">Registrarse</button>
+  </form>
+
+  <div class="form-footer">
+    <a href="/login">¿Ya tenés cuenta? Iniciar sesión</a>
+  </div>
+</div>
+{{#section 'scripts'}}
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('error') === 'registro') {
+    Swal.fire({
+      icon: 'error',
+      title: '❌ Registro fallido',
+      text: 'El usuario ya existe o hubo un problema.'
+    });
+    window.history.replaceState({}, document.title, "/register");
+  }
+</script>
+{{/section}}

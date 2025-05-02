@@ -1,0 +1,47 @@
+<h1>{{title}}</h1>
+
+<form id="productForm" style="margin-bottom: 2em;">
+  <input type="text" name="title" placeholder="Título" required />
+  <input type="number" name="price" placeholder="Precio" required />
+  <input type="number" name="stock" placeholder="Stock" />
+  <input type="text" name="code" placeholder="Código único" required />
+  <input type="text" name="category" placeholder="Categoría" required />
+  <input type="url" name="thumbnail" placeholder="URL de imagen" required />
+  <button type="submit">Agregar producto</button>
+</form>
+
+<table border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Categorías</th>
+            <th>Código</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each productos}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>${{formatNumber this.price}}</td>
+                <td>
+                    {{this.stock}}
+                    <button class="btn-stock-increase" data-id="{{this._id}}">+</button>
+                    <button class="btn-stock-decrease" data-id="{{this._id}}">−</button>
+                </td>
+                <td>{{this.category}}</td>
+                <td>{{this.code}}</td>
+                <td>
+                <img src="{{this.thumbnail}}" alt="Imagen de {{this.title}}" class="img-mini" />
+                </td>
+                <td><button class="btn-eliminar" data-id="{{this._id}}">Eliminar Producto</button></td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<script src="/static/js/products.js"></script>
+<script src="/static/js/global.js"></script>

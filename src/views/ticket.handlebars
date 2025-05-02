@@ -1,0 +1,24 @@
+<h1>🎟️ Ticket de Compra</h1>
+
+<ul class="ticket-detalle">
+  <li><strong>Código:</strong> {{ticket.code}}</li>
+  <li><strong>Fecha:</strong> {{formatDate ticket.purchase_datetime}}</li>
+  <li><strong>Total:</strong> ${{formatNumber ticket.amount}}</li>
+  <li><strong>Comprador:</strong> {{ticket.purchaser}}</li>
+</ul>
+
+<h2 style="text-align: center; margin-top: 2em;">🛍️ Productos Comprados</h2>
+
+<table class="ticket-productos">
+  <thead>
+    <tr><th>Producto</th><th>Cantidad</th></tr>
+  </thead>
+  <tbody>
+    {{#each ticket.cartId.products}}
+    <tr>
+        <td>{{this.product.title}}</td>
+        <td>x{{this.quantity}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -1,0 +1,51 @@
+<h1>🛒 Carrito de Compras</h1>
+
+{{#if carrito.products.length}}
+  <table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Imagen</th>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+        <th>Acciones</th>
+        <th>Eliminar Producto</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each carrito.products}}
+        <tr>
+          <td>
+            <img src="{{this.product.thumbnail}}" alt="Imagen de {{this.product.title}}" class="img-mini" />
+          </td>
+          <td>{{this.product.title}}</td>
+          <td>${{formatNumber this.product.price}}</td>
+          <td>{{this.quantity}}</td>
+          <td>${{formatNumber (multiply this.quantity this.product.price)}}</td>
+          <td>
+            <button class="btn-sumar" data-pid="{{this.product._id}}">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button class="btn-restar" data-pid="{{this.product._id}}">
+              <i class="fas fa-minus"></i>
+            </button>
+          </td>
+          <td><button class="btn-eliminar" data-pid="{{this.product._id}}">
+            <i class="fas fa-trash"></i>
+            </button></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+<br>
+<button id="btn-comprar">🛒 Ir a Comprar Carrito</button>
+<button id="btn-vaciarCarrito">🧹 Vaciar carrito</button>
+<br>
+
+{{else}}
+  <p>No hay productos en este carrito.</p>
+{{/if}}
+
+<script src="/static/js/cart.js"></script>
+<script src="/static/js/global.js"></script>

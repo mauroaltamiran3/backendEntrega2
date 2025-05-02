@@ -1,0 +1,71 @@
+.h1-comprar {
+    text-align: center;
+    margin-bottom: 2em;
+    font-size: 2em;
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  th {
+    background-color: #00796b; /* Verde navbar */
+    color: white;
+    font-weight: bold;
+    padding: 1em;
+    text-align: left;
+  }
+  
+  td {
+    padding: 1em;
+    border-top: 1px solid #eee;
+  }
+
+  .final-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .total-box {
+    margin-top: 2em;
+    text-align: right;
+    font-size: 1.4em;
+    background-color: #e8f5e9;
+    padding: 1.2em 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    color: #00796b;
+    max-width: 400px;
+  }
+  
+  .total-box span {
+    font-weight: normal;
+    margin-right: 0.5em;
+    color: #444;
+  }
+
+  .btn-finalizar {
+    cursor: pointer;
+    margin-top: 2em;
+    text-align: right;
+    font-size: 1.4em;
+    background-color: #00796b;
+    padding: 1.2em 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    color: #fefefe;
+    max-width: 400px;
+    border: none;
+  }

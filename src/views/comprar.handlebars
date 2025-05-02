@@ -1,0 +1,36 @@
+<h1 class="h1-comprar">🧾 Resumen de Compra</h1>
+
+<table border="0" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each carrito.products}}
+      <tr>
+        <td>{{this.product.title}}</td>
+        <td>${{formatNumber this.product.price}}</td>
+        <td>{{this.quantity}}</td>
+        <td>${{formatNumber (multiply this.quantity this.product.price)}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div class="final-box">
+    <div class="total-box">
+    <span>Total:</span>
+    <strong>${{formatNumber totalCompra}}</strong>
+    </div>
+
+    <button id="btn-finalizarCompra" class="btn-finalizar">
+    Finalizar Compra
+    </button>
+</div>
+
+<script src="/static/js/comprar.js"></script>
+<script src="/static/js/global.js"></script>

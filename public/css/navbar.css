@@ -11,8 +11,9 @@
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   margin: 1rem;
+  flex-wrap: wrap;
 }
 
 .nav-link {
@@ -28,21 +29,9 @@
 }
 
 .nav-user {
-  margin: 0;
-}
-
-.user-box {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.3rem;
-  color: white;
-  margin: 0;
-}
-
-.user-info {
-  font-size: 0.95rem;
-  font-weight: bold;
+  align-items: center;
+  gap: 1rem;
 }
 
 .user {
@@ -53,4 +42,15 @@
 
 #jwt-navbar-placeholder {
   margin: 0;
+}
+
+.nav-link-aux {
+  font-size: 1.1rem;
+  color: white;
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.nav-link-aux:hover {
+  opacity: 0.8;
 }

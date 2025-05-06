@@ -33,7 +33,6 @@
       if (res.ok && data.token) {
         localStorage.setItem('jwtToken', data.token);
 
-        // ✨ Guardar nombre y rol del usuario
         const payload = JSON.parse(atob(data.token.split('.')[1]));
         const { name, role } = payload.user;
 

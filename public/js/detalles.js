@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return match ? match[2] : null;
     }
   
-    // Cambiar imagen principal al hacer clic en una miniatura
     const thumbnails = document.querySelectorAll('.miniatura');
     const mainImage = document.getElementById('imagen-principal');
   
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   
-    // Agregar al carrito
     document.querySelectorAll('.btn-add').forEach(btn => {
         btn.addEventListener('click', async () => {
         if(!cid) {

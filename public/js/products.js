@@ -1,7 +1,7 @@
 const form = document.getElementById('productForm');
 
 form.addEventListener('submit', async (e) => {
-  e.preventDefault(); // ✅ previene el envío clásico
+  e.preventDefault();
 
   const data = {
     title: form.title.value,
@@ -12,7 +12,7 @@ form.addEventListener('submit', async (e) => {
     thumbnail: form.thumbnail.value.trim()
   };
 
-  console.log('🟢 Enviando producto:', data); // ✅ Confirmación cliente
+  console.log('🟢 Enviando producto:', data);
 
   const res = await fetch('/api/products', {
     method: 'POST',

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import passport from 'passport';
-import { isAuthenticated } from '../middlewares/auth.js';
+import { handlePolicies } from '../middlewares/handlePolicies.js';
+
 
 const router = Router();
 
@@ -23,7 +24,7 @@ router.get('/logout', (req, res) => {
   });
 });
 
-// Usuario actual autenticado
+// auth usuario acutal
 router.get('/current', (req, res) => {
   if (!req.user) return res.status(401).send('No autenticado');
   res.send({
@@ -36,7 +37,7 @@ router.get('/current', (req, res) => {
   });
 });
 
-router.post('/setadmin', isAuthenticated, async (req, res) => {
+router.post('/setadmin', handlePolicies(['USER', 'ADMIN']), async (req, res) => {
   try {
     req.user.role = 'admin';
     await req.user.save();
@@ -46,7 +47,7 @@ router.post('/setadmin', isAuthenticated, async (req, res) => {
   }
 });
 
-router.post('/setuser', isAuthenticated, async (req, res) => {
+router.post('/setuser', handlePolicies(['USER', 'ADMIN']), async (req, res) => {
   try {
     req.user.role = 'user';
     await req.user.save();
@@ -56,15 +57,14 @@ router.post('/setuser', isAuthenticated, async (req, res) => {
   }
 });
 
-// Rutas auxiliares
 router.get('/success', (req, res) => res.send('✅ Operación exitosa'));
 router.get('/failregister', (req, res) => res.send('❌ Falló el registro'));
 router.get('/faillogin', (req, res) => res.send('❌ Falló el login'));
 
-// Iniciar auth con GitHub
+// aut con github
 router.get('/github', passport.authenticate('github', { scope: ['user:email'] }));
 
-// Callback desde GitHub
+// call desde gitHub
 router.get('/githubcallback', passport.authenticate('github', {
   successRedirect: '/',
   failureRedirect: '/login'

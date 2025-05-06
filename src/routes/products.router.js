@@ -1,69 +1,49 @@
 import express from 'express';
-import Product from '../models/Product.js';
+import { handlePolicies } from '../middlewares/handlePolicies.js';
+import {
+  getAllProducts,
+  createProduct,
+  updateProductStock,
+  deleteProductById
+} from '../services/productService.js';
 
 const router = express.Router();
 
-// Obtener todos los productos
-router.get('/api/products', async (req, res) => {
+router.get('/api/products', handlePolicies(['ADMIN']), async (req, res) => {
   try {
-    const productos = await Product.find();
+    const productos = await getAllProducts();
     res.status(200).json(productos);
   } catch (error) {
-    res.status(500).json({
-      mensaje: '❌ Error al obtener productos de la base de datos',
-      detalles: error.message
-    });
+    res.status(500).json({ mensaje: '❌ Error al obtener productos', detalles: error.message });
   }
 });
 
-// Crear un nuevo producto
-router.post('/api/products', async (req, res) => {
+router.post('/api/products', handlePolicies(['ADMIN']), async (req, res) => {
   try {
-    const resultado = await Product.create(req.body);
+    const resultado = await createProduct(req.body);
     res.status(201).json(resultado);
   } catch (error) {
-    console.error('❌ Error al crear producto:', error.message);
-    res.status(400).json({
-      mensaje: '❌ Error al crear producto. Verificá los campos requeridos.',
-      detalles: error.message
-    });
+    res.status(400).json({ mensaje: '❌ Error al crear producto', detalles: error.message });
   }
 });
 
-router.patch('/api/products/:pid/stock', async (req, res) => {
+router.patch('/api/products/:pid/stock', handlePolicies(['ADMIN']), async (req, res) => {
   try {
-    const { pid } = req.params;
-    const { operacion } = req.body;
-
-    const producto = await Product.findById(pid);
+    const producto = await updateProductStock(req.params.pid, req.body.operacion);
     if (!producto) return res.status(404).json({ mensaje: 'Producto no encontrado' });
-
-    if (operacion === 'incrementar') {
-      producto.stock += 1;
-    } else if (operacion === 'reducir' && producto.stock > 0) {
-      producto.stock -= 1;
-    }
-
-    await producto.save();
     res.sendStatus(200);
   } catch (error) {
     res.status(500).json({ mensaje: '❌ Error al actualizar stock', detalles: error.message });
   }
 });
 
-router.delete('/api/product/:pid', async (req, res) => {
+router.delete('/api/product/:pid', handlePolicies(['ADMIN']), async (req, res) => {
   try {
-    const { pid } = req.params;
-    const eliminado = await Product.findByIdAndDelete(pid);
-    if (!eliminado) {
-      return res.status(404).json({ mensaje: 'Producto no encontrado' });
-    }
+    const eliminado = await deleteProductById(req.params.pid);
+    if (!eliminado) return res.status(404).json({ mensaje: 'Producto no encontrado' });
     res.status(200).json({ mensaje: 'Producto eliminado correctamente' });
   } catch (error) {
-    res.status(500).json({
-      mensaje: '❌ Error al eliminar el producto',
-      detalles: error.message
-    });
+    res.status(500).json({ mensaje: '❌ Error al eliminar producto', detalles: error.message });
   }
 });
 

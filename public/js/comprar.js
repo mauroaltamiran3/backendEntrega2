@@ -1,3 +1,7 @@
+const btn = document.getElementById('btn-finalizarCompra');
+const btnText = document.getElementById('btn-text');
+const btnSpinner = document.getElementById('btn-spinner');
+
 document.addEventListener('DOMContentLoaded', () => {
     const cid = getCookie('cid');
 
@@ -11,16 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
       
         const confirmar = confirm('¿Estás seguro de finalizar la compra?');
         if (!confirmar) return;
+
+        btn.disabled = true;
+        btnText.textContent = 'Procesando...';
+        btnSpinner.style.display = 'inline-block';
       
         try {
           const res = await fetch(`/api/tickets/${cid}`, {
-            method: 'POST'
+            method: 'POST',
+            credentials: 'include'
           });
       
           const data = await res.json();
       
           if (res.ok && data.ticketId) {
-            // ✅ Si todo salió bien
             window.location.href = `/ticket/${data.ticketId}`;
           } else {
             alert('❌ No se pudo procesar la compra: ' + (data.mensaje || 'Error desconocido'));
@@ -29,6 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
           console.error('❌ Error al finalizar compra:', error);
           alert('⚠️ Ocurrió un error inesperado.');
+        } finally {
+          btn.disabled = false;
+          btnText.textContent = 'Finalizar Compra';
+          btnSpinner.style.display = 'none';
         }
     });      
 });

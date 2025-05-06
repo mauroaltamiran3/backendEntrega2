@@ -42,30 +42,29 @@
     }
   </script>
   {{{scripts}}}
-  <script>
-    const jwtToken = localStorage.getItem('jwtToken');
-    const jwtName = localStorage.getItem('jwtUserName');
-    const jwtRole = localStorage.getItem('jwtUserRole');
-    const jwtPlaceholder = document.getElementById('jwt-navbar-placeholder');
-    const sessionLoginLink = document.getElementById('session-login-link');
+<script>
+  const jwtToken = localStorage.getItem('jwtToken') || getCookie('jwtCookie');
 
-    if (jwtToken && jwtPlaceholder) {
-      jwtPlaceholder.innerHTML = `
-        <span class="user">👤 ${jwtName} (${jwtRole})</span>
-        <a href="/jwt/profile" class="nav-link">📄 Mi perfil</a>
-        <a href="#" class="nav-link" id="jwtLogoutBtn">🚪 Cerrar sesión</a>
-      `;
+  function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+  }
 
-      if (sessionLoginLink) sessionLoginLink.style.display = 'none';
+  const jwtNavbar = document.getElementById('jwt-navbar-placeholder');
 
-      document.getElementById('jwtLogoutBtn').addEventListener('click', (e) => {
-        e.preventDefault();
-        localStorage.removeItem('jwtToken');
-        localStorage.removeItem('jwtUserName');
-        localStorage.removeItem('jwtUserRole');
-        window.location.href = '/';
-      });
-    }
-  </script>
+  if (jwtNavbar && jwtToken) {
+    jwtNavbar.innerHTML = `
+      <a href="/jwt/cookie/profile" class="nav-link">👤 Perfil (JWT)</a>
+      <a href="#" class="nav-link" id="jwtLogoutBtn">🚪 Cerrar sesión JWT</a>
+    `;
+
+    document.getElementById('jwtLogoutBtn').addEventListener('click', async (e) => {
+      e.preventDefault();
+      localStorage.removeItem('jwtToken');
+      await fetch('/jwt/cookie/logout', { method: 'POST' });
+      window.location.href = '/';
+    });
+  }
+</script>
 </body>
 </html>

@@ -57,14 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const resultado = await response.json();
       
         if (!resultado.valido) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: resultado.mensaje
-          });
-          eliminarProducto(cid,pid)
-          return;
-        }
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: resultado.mensaje
+            });
+            return;
+          }          
 
         if (confirm('¿Estás seguro de que quieres comprar el carrito?')) {
             window.location.href =`/cart/${cid}/comprar`;

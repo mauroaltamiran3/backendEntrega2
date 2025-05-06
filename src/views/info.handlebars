@@ -1,0 +1,41 @@
+<h1>📊 Información del Servidor</h1>
+
+<table border="1" cellpadding="10" cellspacing="0">
+  <tr>
+    <th>Clave</th>
+    <th>Valor</th>
+  </tr>
+  <tr>
+    <td>Argumentos de entrada</td>
+    <td>{{info.argumentos}}</td>
+  </tr>
+  <tr>
+    <td>Plataforma</td>
+    <td>{{info.plataforma}}</td>
+  </tr>
+  <tr>
+    <td>Versión de Node</td>
+    <td>{{info.versionNode}}</td>
+  </tr>
+  <tr>
+    <td>Memoria RSS (MB)</td>
+    <td>{{formatNumber info.memoria}}</td>
+  </tr>
+  <tr>
+    <td>Path de ejecución</td>
+    <td>{{info.pathEjecucion}}</td>
+  </tr>
+  <tr>
+    <td>Process ID (PID)</td>
+    <td>{{info.processId}}</td>
+  </tr>
+  <tr>
+    <td>Carpeta del Proyecto</td>
+    <td>{{info.carpetaProyecto}}</td>
+  </tr>
+</table>
+
+<div class="info-actions">
+  <a href="/calculo-bloq" class="info-btn">🧠 Calculo Bloqueante</a>
+  <a href="/calculo-nobloq" class="info-btn">⚙️ Calculo No Bloqueante</a>
+</div>

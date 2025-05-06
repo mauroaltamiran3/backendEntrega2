@@ -18,6 +18,7 @@ import passport from 'passport';
 import initializePassport from './config/passport.config.js';
 import sessionRouter from './routes/sessions.router.js';
 import jwtRouter from './routes/jwt.router.js';
+import systemRouter from './routes/system.router.js';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -31,9 +32,6 @@ mongoose.connect('mongodb://localhost:27017/ecommerce')
   .then(() => console.log('✅ Conectado a MongoDB'))
   .catch(error => console.error('❌ Error al conectar a MongoDB:', error));
 
-// Obtener los helpers de comparación
-
-// Configuración de Handlebars
 app.engine('handlebars', engine({
   handlebars: allowInsecurePrototypeAccess(Handlebars),
   helpers: {
@@ -86,8 +84,9 @@ app.use(productsRouter);
 app.use(cartRouter);
 app.use(ticketsRouter);
 app.use(jwtRouter);
+app.use(systemRouter);
 
-// Iniciar servidor
+// Iniciar server
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });

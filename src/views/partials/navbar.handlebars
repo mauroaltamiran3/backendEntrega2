@@ -3,6 +3,7 @@
     <a href="/" class="nav-link">🏠 Inicio</a>
     <a href="/realtimeproducts" class="nav-link">➕ Agregar Producto</a>
     <a href="/carts/{{carritoId}}" class="nav-link">🛒 Ir al Carrito</a>
+    <a href="/info" class="nav-link">ℹ️ Info del Servidor</a>
   </div>
 
   <div class="nav-right">
@@ -27,6 +28,6 @@
     </div>
   {{else}}
     <a href="/login" class="nav-link" id="session-login-link">🔐 Iniciar sesión</a>
-    <div id="jwt-navbar-placeholder"></div>
+    <div id="jwt-navbar-placeholder" class="nav-user"></div>
   {{/if}}
 </nav>

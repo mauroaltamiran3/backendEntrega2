@@ -14,11 +14,11 @@
     <tr><th>Producto</th><th>Cantidad</th></tr>
   </thead>
   <tbody>
-    {{#each ticket.cartId.products}}
-    <tr>
-        <td>{{this.product.title}}</td>
-        <td>x{{this.quantity}}</td>
-    </tr>
+    {{#each ticket.products}}
+      <tr>
+          <td>{{this.title}}</td>
+          <td>x{{this.quantity}}</td>
+      </tr>
     {{/each}}
   </tbody>
 </table>

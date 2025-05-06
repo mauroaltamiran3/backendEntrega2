@@ -1,0 +1,49 @@
+h1 {
+  text-align: center;
+  color: #00796b;
+  margin-bottom: 2rem;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 80%;
+  background-color: #f0fdfc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: #004d40;
+  color: white;
+  font-size: 1.1rem;
+}
+
+td, th {
+  padding: 1rem;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #e0f2f1;
+}
+
+.info-actions {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.info-btn {
+  background-color: #00796b;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.info-btn:hover {
+  background-color: #004d40;
+}
